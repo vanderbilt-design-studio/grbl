@@ -96,6 +96,7 @@
   #define PROBE_BIT       5  // Uno Analog Pin 5
   #define PROBE_MASK      (1<<PROBE_BIT)
 
+<<<<<<< HEAD
   #if !defined(ENABLE_DUAL_AXIS)
 
     // Define flood and mist coolant enable output pins.
@@ -144,8 +145,9 @@
     // #define SPINDLE_TCCRB_INIT_MASK   (1<<CS20)               // Disable prescaler -> 62.5kHz
     // #define SPINDLE_TCCRB_INIT_MASK   (1<<CS21)               // 1/8 prescaler -> 7.8kHz (Used in v0.9)
     // #define SPINDLE_TCCRB_INIT_MASK   ((1<<CS21) | (1<<CS20)) // 1/32 prescaler -> 1.96kHz
-    #define SPINDLE_TCCRB_INIT_MASK      (1<<CS22)               // 1/64 prescaler -> 0.98kHz (J-tech laser)
-
+    // #define SPINDLE_TCCRB_INIT_MASK      (1<<CS22)               // 1/64 prescaler -> 0.98kHz (J-tech laser)
+    #define SPINDLE_TCCRB_INIT_MASK ((1<<CS22)| (1<<CS21)| (1<<CS20)) // 1/1024 prescaler -> 62.5kHz/1024=61hz .. 16ms
+    
     // NOTE: On the 328p, these must be the same as the SPINDLE_ENABLE settings.
     #define SPINDLE_PWM_DDR   DDRB
     #define SPINDLE_PWM_PORT  PORTB
@@ -192,7 +194,7 @@
 
       // Variable spindle configuration below. Do not change unless you know what you are doing.
       // NOTE: Only used when variable spindle is enabled.
-      #define SPINDLE_PWM_MAX_VALUE     255 // Don't change. 328p fast PWM mode fixes top value as 255.
+      #define SPINDLE_PWM_MAX_VALUE     39 // Don't change. 328p fast PWM mode fixes top value as 255.
       #ifndef SPINDLE_PWM_MIN_VALUE
         #define SPINDLE_PWM_MIN_VALUE   1   // Must be greater than zero.
       #endif
@@ -208,7 +210,6 @@
       // #define SPINDLE_TCCRB_INIT_MASK   (1<<CS20)               // Disable prescaler -> 62.5kHz
       // #define SPINDLE_TCCRB_INIT_MASK   (1<<CS21)               // 1/8 prescaler -> 7.8kHz (Used in v0.9)
       // #define SPINDLE_TCCRB_INIT_MASK   ((1<<CS21) | (1<<CS20)) // 1/32 prescaler -> 1.96kHz
-      #define SPINDLE_TCCRB_INIT_MASK      (1<<CS22)               // 1/64 prescaler -> 0.98kHz (J-tech laser)
 
       // NOTE: On the 328p, these must be the same as the SPINDLE_ENABLE settings.
       #define SPINDLE_PWM_DDR   DDRB

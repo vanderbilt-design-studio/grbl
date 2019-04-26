@@ -102,15 +102,15 @@
 // on separate pin, but homed in one cycle. Also, it should be noted that the function of hard limits
 // will not be affected by pin sharing.
 // NOTE: Defaults are set for a traditional 3-axis CNC machine. Z-axis first to clear, followed by X & Y.
-#define HOMING_CYCLE_0 (1<<Z_AXIS)                // REQUIRED: First move Z to clear workspace.
-#define HOMING_CYCLE_1 ((1<<X_AXIS)|(1<<Y_AXIS))  // OPTIONAL: Then move X,Y at the same time.
+// #define HOMING_CYCLE_0 (1<<Z_AXIS)                // REQUIRED: First move Z to clear workspace.
+// #define HOMING_CYCLE_1 ((1<<X_AXIS)|(1<<Y_AXIS))  // OPTIONAL: Then move X,Y at the same time.
 // #define HOMING_CYCLE_2                         // OPTIONAL: Uncomment and add axes mask to enable
 
 // NOTE: The following are two examples to setup homing for 2-axis machines.
 // #define HOMING_CYCLE_0 ((1<<X_AXIS)|(1<<Y_AXIS))  // NOT COMPATIBLE WITH COREXY: Homes both X-Y in one cycle. 
 
-// #define HOMING_CYCLE_0 (1<<X_AXIS)  // COREXY COMPATIBLE: First home X
-// #define HOMING_CYCLE_1 (1<<Y_AXIS)  // COREXY COMPATIBLE: Then home Y
+#define HOMING_CYCLE_0 (1<<X_AXIS)  // COREXY COMPATIBLE: First home X
+#define HOMING_CYCLE_1 (1<<Y_AXIS)  // COREXY COMPATIBLE: Then home Y
 
 // Number of homing cycles performed after when the machine initially jogs to limit switches.
 // This help in preventing overshoot and should improve repeatability. This value should be one or
@@ -186,7 +186,7 @@
 // defined at (http://corexy.com/theory.html). Motors are assumed to positioned and wired exactly as
 // described, if not, motions may move in strange directions. Grbl requires the CoreXY A and B motors
 // have the same steps per mm internally.
-// #define COREXY // Default disabled. Uncomment to enable.
+#define COREXY // Default disabled. Uncomment to enable.
 
 // Inverts pin logic of the control command pins based on a mask. This essentially means you can use
 // normally-closed switches on the specified pins, rather than the default normally-open switches.
@@ -347,7 +347,7 @@
 // in mind that you will begin to lose PWM resolution with increased minimum PWM values, since you have less
 // and less range over the total 255 PWM levels to signal different spindle speeds.
 // NOTE: Compute duty cycle at the minimum PWM by this equation: (% duty cycle)=(SPINDLE_PWM_MIN_VALUE/255)*100
-// #define SPINDLE_PWM_MIN_VALUE 5 // Default disabled. Uncomment to enable. Must be greater than zero. Integer (1-255).
+#define SPINDLE_PWM_MIN_VALUE 8 // Default disabled. Uncomment to enable. Must be greater than zero. Integer (1-255).
 
 // By default on a 328p(Uno), Grbl combines the variable spindle PWM and the enable into one pin to help
 // preserve I/O pins. For certain setups, these may need to be separate pins. This configure option uses
