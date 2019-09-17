@@ -96,7 +96,6 @@
   #define PROBE_BIT       5  // Uno Analog Pin 5
   #define PROBE_MASK      (1<<PROBE_BIT)
 
-<<<<<<< HEAD
   #if !defined(ENABLE_DUAL_AXIS)
 
     // Define flood and mist coolant enable output pins.
